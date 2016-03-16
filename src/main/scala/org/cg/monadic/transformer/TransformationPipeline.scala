@@ -49,11 +49,16 @@ trait TransformationPipeline[IN, OUT]  extends LazyLogging {
         case Success(s) => 
           logger.debug("[transform]success: " + s.toString())
         case Failure(e) => 
-          logger.error("[transform]failed to transform: " + e.printStackTrace())  
+          val errSw = new StringWriter
+          e.printStackTrace(new PrintWriter(errSw))
+          logger.error("[transform]failed to transform: \n" + errSw.toString())  
       }
       toTry
     } catch {
       case NonFatal(e) => 
+        val errSw = new StringWriter
+        e.printStackTrace(new PrintWriter(errSw))
+        logger.error("invalid transformation: \n" + errSw.toString())
         Failure(e)
     }
   }
