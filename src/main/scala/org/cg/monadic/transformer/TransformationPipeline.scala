@@ -21,6 +21,8 @@ import com.typesafe.scalalogging.slf4j.LazyLogging
 import scala.util.{Failure, Success, Try}
 import scala.util.control.NonFatal
 import com.typesafe.config.Config
+import java.io.PrintWriter
+import java.io.StringWriter
 
 /**
  * @author WZ
