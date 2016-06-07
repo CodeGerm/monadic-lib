@@ -18,9 +18,11 @@
 package org.cg.monadic.transformer
 
 import com.typesafe.scalalogging.slf4j.LazyLogging
+import org.slf4j.LoggerFactory
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration.Duration
 import scala.concurrent.ExecutionContext.Implicits.global 
+import com.typesafe.scalalogging.slf4j.Logger
 
 /**
  * A monadic type transformer that can be used to chain in for-comprehension
@@ -28,6 +30,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
  * @author WZ
  */
 trait Transformer[OUT] extends LazyLogging { self: Transformer[OUT] =>
+  
+  @transient
+  override protected lazy val logger: Logger =  Logger(LoggerFactory getLogger getClass.getName)
   
   /**
    * Override to perform transformation
