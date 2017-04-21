@@ -46,6 +46,7 @@ import scala.reflect.runtime.universe
 /**
  * transform CSV -> DataFrame
  */
+@deprecated
 case class CSVToDataFrame(sqlContext: SQLContext, csvPath: String, options: Map[String, String])
     extends Transformer[DataFrame] {
 
@@ -61,6 +62,7 @@ case class CSVToDataFrame(sqlContext: SQLContext, csvPath: String, options: Map[
 /**
  *  transform  DataFrame -> CSV
  */
+@deprecated
 case class DataFrameToCSV(table: DataFrame, csvPath: String)
     extends Transformer[Unit] {
 
@@ -73,6 +75,7 @@ case class DataFrameToCSV(table: DataFrame, csvPath: String)
  * transform DataFrame -> DataFrame by formalizing date time column from variable
  * length date format 7/1/2015 1:0:0 AM to standard date format
  */
+@deprecated
 case class TimeDataFormalizer(table: DataFrame, timeCols: Array[String], timeFormat: String = "yyyy-MM-dd HH:mm:ss.SSS", timezone: DateTimeZone = DateTimeZone.UTC)
     extends Transformer[DataFrame] {
 
