@@ -21,8 +21,6 @@ import com.typesafe.scalalogging.slf4j.LazyLogging
 import scala.util.{Failure, Success, Try}
 import scala.util.control.NonFatal
 import com.typesafe.config.Config
-import java.io.PrintWriter
-import java.io.StringWriter
 
 /**
  * @author WZ
@@ -51,16 +49,12 @@ trait TransformationPipeline[IN, OUT]  extends LazyLogging {
         case Success(s) => 
           logger.debug("[transform]success: " + s.toString())
         case Failure(e) => 
-          val errSw = new StringWriter
-          e.printStackTrace(new PrintWriter(errSw))
-          logger.error("[transform]failed to transform: \n" + errSw.toString())  
+          logger.error("[transform]failed to transform: ", e)  
       }
       toTry
     } catch {
       case NonFatal(e) => 
-        val errSw = new StringWriter
-        e.printStackTrace(new PrintWriter(errSw))
-        logger.error("invalid transformation: \n" + errSw.toString())
+        logger.error("invalid transformation: ", e)
         Failure(e)
     }
   }
