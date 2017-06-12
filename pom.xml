@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.codegerm</groupId>
 	<artifactId>org.cg.monadic-lib</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -16,7 +16,7 @@
 		<url>https://github.com/CodeGerm/monadic-lib</url>
 		<connection>scm:git:git@github.com:CodeGerm/monadic-lib.git</connection>
 		<developerConnection>scm:git:git@github.com:CodeGerm/monadic-lib.git</developerConnection>
-	  <tag>org.cg.monadic-lib-1.0.1</tag>
+	  <tag>HEAD</tag>
   </scm>
 	<licenses>
 		<license>
