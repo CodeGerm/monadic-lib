@@ -37,7 +37,7 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spark.version>2.1.0</spark.version>
+		<spark.version>2.4.0</spark.version>
 		<scala.version>2.11</scala.version>
 	</properties>
 
@@ -47,14 +47,16 @@
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-streaming_2.11</artifactId>
 			<version>${spark.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-sql_2.11</artifactId>
 			<version>${spark.version}</version>
+			<scope>provided</scope>
 		</dependency>
-
-<!--		<dependency>
+<!--	
+		<dependency>
 			<groupId>com.databricks</groupId>
 			<artifactId>spark-csv_2.10</artifactId>
 			<version>1.2.0</version>
@@ -110,36 +112,6 @@
 
 	<build>
 		<plugins>
-	<!--
-			<plugin>
-				<groupId>org.scala-tools</groupId>
-				<artifactId>maven-scala-plugin</artifactId>
-				<version>2.11</version>
-				<executions>
-					<execution>
-						<id>compile</id>
-						<goals>
-						</goals>
-						<phase>compile</phase>
-					</execution>
-
-					<execution>
-						<id>test-compile</id>
-						<goals>
-							<goal>testCompile</goal>
-						</goals>
-						<phase>test-compile</phase>
-					</execution>
-
-					<execution>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		-->
 			<plugin>
 				<!-- see http://davidb.github.com/scala-maven-plugin -->
 				<groupId>net.alchim31.maven</groupId>
