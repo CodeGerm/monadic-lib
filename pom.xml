@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.codegerm</groupId>
-	<artifactId>org.cg.monadic-lib</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<artifactId>org.cg.monadic-lib_2.11</artifactId>
+	<version>1.1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -37,30 +37,35 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spark.version>1.5.2</spark.version>
+		<spark.version>2.4.0</spark.version>
+		<scala.version>2.11</scala.version>
 	</properties>
 
 	<dependencies>
 		<!-- Spark -->
 		<dependency>
 			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-sql_2.10</artifactId>
+			<artifactId>spark-streaming_2.11</artifactId>
 			<version>${spark.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-streaming_2.10</artifactId>
+			<artifactId>spark-sql_2.11</artifactId>
 			<version>${spark.version}</version>
+			<scope>provided</scope>
 		</dependency>
+<!--	
 		<dependency>
 			<groupId>com.databricks</groupId>
 			<artifactId>spark-csv_2.10</artifactId>
 			<version>1.2.0</version>
 		</dependency>
+-->
 		<!-- Logging -->
 		<dependency>
 			<groupId>com.typesafe.scala-logging</groupId>
-			<artifactId>scala-logging-slf4j_2.10</artifactId>
+			<artifactId>scala-logging-slf4j_2.11</artifactId>
 			<version>2.1.2</version>
 			<exclusions>
 				<exclusion>
@@ -93,7 +98,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest_2.10</artifactId>
+			<artifactId>scalatest_2.11</artifactId>
 			<version>2.2.4</version>
 			<scope>test</scope>
 			<exclusions>
@@ -108,38 +113,10 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.scala-tools</groupId>
-				<artifactId>maven-scala-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>compile</id>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-						<phase>compile</phase>
-					</execution>
-
-					<execution>
-						<id>test-compile</id>
-						<goals>
-							<goal>testCompile</goal>
-						</goals>
-						<phase>test-compile</phase>
-					</execution>
-
-					<execution>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<!-- see http://davidb.github.com/scala-maven-plugin -->
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>scala-maven-plugin</artifactId>
-				<version>3.2.0</version>
+				<version>3.2.2</version>
 				<executions>
 					<execution>
 						<goals>
@@ -149,10 +126,10 @@
 						</goals>
 						<configuration>
 							<args>
-								<arg>-make:transitive</arg>
 								<arg>-dependencyfile</arg>
 								<arg>${project.build.directory}/.scala_dependencies</arg>
 							</args>
+							<scalaVersion>${scala.version}</scalaVersion>
 						</configuration>
 					</execution>
 				</executions>
